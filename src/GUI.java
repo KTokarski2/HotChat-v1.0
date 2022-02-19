@@ -103,5 +103,21 @@ public class GUI {
         }
     }
 
+    public static class UserWindow extends JFrame implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    public static class SettingsWindow extends JFrame implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        }
+    }
+
 
 }
