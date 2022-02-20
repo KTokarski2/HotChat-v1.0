@@ -6,6 +6,63 @@ import java.awt.event.ActionListener;
 public class GUI {
 
 
+    public static class WelcomeWindow extends JFrame implements ActionListener{
+
+        Container container = getContentPane();
+        JButton regiserButton = new JButton("Regiser");
+        JButton loginButton = new JButton("Login");
+        JLabel welcomeLabel = new JLabel("Welcome to HotChat! What would u like to do?");
+        JLabel logoLabel = new JLabel(new ImageIcon("Assets/HotChatIcon.png"));
+        ImageIcon icon = new ImageIcon("Assets/HotChatIcon.png");
+
+        public WelcomeWindow() {
+            this.setTitle("Welcome to HotChat!");
+            this.setVisible(true);
+            this.setBounds(10,10,500,500);
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.setResizable(false);
+            this.setIconImage(icon.getImage());
+            setLayoutManager();
+            setLocationAndSize();
+            addComponentsToContainer();
+        }
+
+        public void setLayoutManager() {
+            container.setLayout(null);
+        }
+
+        public void setLocationAndSize() {
+            welcomeLabel.setBounds(110,10,400,50);
+            logoLabel.setBounds(90,50,300,325);
+            regiserButton.setBounds(100,400,100,50);
+            loginButton.setBounds(280,400,100,50);
+        }
+
+        public void addComponentsToContainer() {
+            container.add(welcomeLabel);
+            container.add(regiserButton);
+            container.add(loginButton);
+            container.add(logoLabel);
+        }
+
+        public void addActionEvent() {
+            loginButton.addActionListener(this);
+            regiserButton.addActionListener(this);
+        }
+
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource() == loginButton) {
+                LoginWindow loginWindow = new LoginWindow();
+            }
+
+            if (e.getSource() == regiserButton) {
+                RegisterWindow registerWindow = new RegisterWindow();
+            }
+        }
+    }
+
     public static class LoginWindow extends JFrame implements ActionListener {
 
         Container container = getContentPane();
@@ -20,7 +77,7 @@ public class GUI {
 
         public LoginWindow() {
 
-            this.setTitle("Welcome to HotChat app!");
+            this.setTitle("Login to HotChat");
             this.setVisible(true);
             this.setBounds(10,10,370,600);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -191,6 +248,10 @@ public class GUI {
         public void actionPerformed(ActionEvent e) {
 
         }
+    }
+
+    public void showGUI() {
+        WelcomeWindow welcomeWindow = new WelcomeWindow();
     }
 
 
